@@ -14,39 +14,23 @@ class product_schema_widget extends WP_Widget {
 
 	public function widget( $args, $instance ) {
 
-		global $post;
+		if (!is_front_page()) {		
 
-		$product_schema_name = esc_attr(get_post_meta( $post->ID, '_product_schema_name', true ));
-		$product_schema_description = esc_attr(get_post_meta( $post->ID, '_product_schema_description', true ));
-		$product_schema_image = esc_attr(get_post_meta( $post->ID, '_product_schema_image', true ));
-		$product_schema_price = esc_attr(get_post_meta( $post->ID, '_product_schema_price', true ));
-		$product_schema_val = esc_attr(get_post_meta( $post->ID, '_product_schema_val', true ));
+			global $post;
 
-		
-		if (	!empty($product_schema_name) && 
-				!empty($product_schema_description) && 
-				!empty($product_schema_image) &&
-				!empty($product_schema_price) &&
-				!empty($product_schema_val)
-			) {
+			$id = $post->ID;
 
-		echo $args['before_widget'];
+			$class = $instance['class'];
 
-		echo     '<div class="'.$instance['class'].'" itemscope itemtype="http://schema.org/Product">
-						<h2 itemprop="name"> '.$product_schema_name.' </h2>
-						<span itemprop="description"> '.$product_schema_description.' </span>
-						<img src="'.$product_schema_image.'" itemprop="image">
-						<div itemprop="offers" itemscope itemtype="http://schema.org/Offer"> 
-							<span itemprop="price">'.$product_schema_price.'</span>
-							<span itemprop="priceCurrency">'.$product_schema_val.'</span>			   
-					   </div>
-					</div>';
+			echo $args['before_widget'];
 
-		echo $args['after_widget'];
+			echo productSchemaGetMeta($id, $class);
 
-		} else { die(); }
+			echo $args['after_widget'];
 
-		
+			} 
+
+	
 	}
 
 

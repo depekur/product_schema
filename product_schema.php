@@ -9,12 +9,12 @@ Version: 1.0
 Author URI: depekur@gmail.com
 */
 
-
-include 'src/product_schema_init_meta_box.php';
-include 'src/product_schema_add_media_uploader.php';
-include 'src/product_schema_save_meta_data.php';
-include 'src/product_schema_widget.php';
-include 'src/product_schema_shortcode.php';
+require 'src/product_schema_function.php';
+require 'src/product_schema_init_meta_box.php';
+require 'src/product_schema_add_media_uploader.php';
+require 'src/product_schema_save_meta_data.php';
+require 'src/product_schema_widget.php';
+require 'src/product_schema_shortcode.php';
 
 
 add_action( 'add_meta_boxes', 'product_schema_add_meta_box' );

@@ -51,10 +51,15 @@ function product_schema_view_meta_box( $post )
 	</label> 
 </p>
 <p>
-	<label id="product_schema_field_image">Изображение услуги\товара:
+	
+	<label id="product_schema_field_image">Изображение услуги\товара: <br>
+
+	<img src="<?= esc_attr( $product_schema_image ) ?>" style="width:200px;" id="product_schema_img_tag">
+	
 		<input type="text" name="product_schema_field_image" id="meta-image" value="<?= esc_attr( $product_schema_image ) ?>" />
 		<input type="button" id="meta-image-button" class="button" value="добавить изображение" />
 	</label>   
+
 </p>
 <p>
 	<label> Цена услуги\товара:
